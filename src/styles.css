@@ -2,4 +2,57 @@
 
 @tailwind components;
 
+.card {
+    @apply flex-1 rounded-lg my-5 bg-white shadow-xl p-10
+}
+.card-confirm:hover {
+    @apply bg-red-900
+}
+.card-recover:hover {
+    @apply bg-green-900
+}
+.card-active:hover {
+    @apply bg-yellow-900
+}
+.card-death:hover {
+    @apply bg-black
+}
+
+.card-title {
+    @apply text-3xl
+}
+.card-count-confirm {
+    @apply text-4xl font-bold text-red-900
+}
+.card-count-recover {
+    @apply text-4xl font-bold text-green-900
+}
+.card-count-active {
+    @apply text-4xl font-bold text-yellow-900
+}
+.card-count-death {
+    @apply text-4xl font-bold text-black
+}
+
+@screen sm {
+
+    
+}
+
+@screen md {
+
+    .card {
+        @apply mx-4
+    }
+    
+
+}
+@screen lg {
+
+    .card {
+        @apply my-0
+    }
+    
+}
+
 @tailwind utilities;

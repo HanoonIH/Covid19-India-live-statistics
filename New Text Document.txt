@@ -1,0 +1,1 @@
+flex-1 group divide-y-2 divide-red-900 hover:divide-gray-100 rounded-lg my-5 lg:my-0 bg-white shadow-xl p-10 md:mx-4 hover:bg-red-900
