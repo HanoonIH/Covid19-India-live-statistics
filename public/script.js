@@ -67,26 +67,29 @@ $(document).ready(function(){
         myChart.canvas.style.width = '100vw';
 
         var chartAll = new Chart(myChart, {
-            type: 'horizontalBar',
+            type: 'line',
             data: {
                 labels: statecode,
                 datasets: [
                     {
                         label: "Recovered",
                         data: recovered,
-                        backgroundColor: "#36a2eb",
+                        borderColor: "#36a2eb",
+                        backgroundColor: 'rgba(0, 0, 0, 0)',
                         minBarLength: 100
                     },
                     {
                         label: "Confirmed",
                         data: confirmed,
-                        backgroundColor: "#ffcd56",
+                        borderColor: "#ffcd56",
+                        backgroundColor: 'rgba(0, 0, 0, 0)',
                         minBarLength: 100
                     },
                     {
                         label: "Deaths",
                         data: deaths,
-                        backgroundColor: "#ff6384",
+                        borderColor: "#ff6384",
+                        backgroundColor: 'rgba(0, 0, 0, 0)',
                         minBarLength: 100
                     }
                 ]
@@ -103,7 +106,7 @@ $(document).ready(function(){
                 },
                 tooltips: {
                     mode: 'index'
-                }
+                },
             }
 
         });
@@ -117,7 +120,7 @@ $(document).ready(function(){
         var chartTop5 = new Chart(top5StatesChart, {
             type: 'bar',
             data: {
-                labels: statecode. slice(0, 5),
+                labels: state.slice(0, 5),
                 datasets: [
                     {
                         label: "Confirmed",
@@ -151,7 +154,7 @@ $(document).ready(function(){
 
 
         // State cards
-        for (i=0; i < data.statewise.length - 1; i++) {
+        for (let i=0; i < data.statewise.length - 1; i++) {
 
             // State Cards
             const stateList = document.querySelector('#statesPage ul')
@@ -200,8 +203,8 @@ $(document).ready(function(){
             stateList.appendChild(stateLi)
 
             // Add classes to created Elements
-            stateName.classList.add("rounded-lg", "my-5", "bg-white", "shadow-lg", "p-5", "md:mx-4", "text-3xl", "text-center", "border-red-900", "border-4", "font-bold", "state-name")
-            cardsContainer.classList.add('lg:flex')
+            stateName.classList.add("rounded-lg", "my-5", "bg-white", "shadow-lg", "p-5", "md:mx-4", "text-3xl", "text-center", "border-red-900", "border", "font-bold", "state-name")
+            cardsContainer.classList.add("hidden")
 
             stateConfirmedCard.classList.add("card", "card-confirm", "group")
             stateConfirmedTitle.classList.add("card-title", "group-hover:text-gray-100")
@@ -232,6 +235,21 @@ $(document).ready(function(){
             stateActiveCount.textContent = active[i]
             stateDeathCount.textContent = deaths[i]
         }
+
+        // State collapse button
+        const stateButton = document.querySelectorAll('.state-name')
+
+        for (let i = 0; i < stateButton.length; i++){
+            stateButton[i].addEventListener('click', function(){
+                let cardContainer = this.nextElementSibling;
+                if (cardContainer.className == "hidden"){
+                    cardContainer.className = "lg:flex";
+                } else {
+                    cardContainer.className = "hidden";
+                }
+            })
+        };
+
     });
 });
 
