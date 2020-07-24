@@ -157,7 +157,7 @@ $(document).ready(function(){
         for (let i=0; i < data.statewise.length - 1; i++) {
 
             // State Cards
-            const stateList = document.querySelector('#statesPage ul')
+            var stateList = document.querySelector('#statesPage ul')
 
             // Add a new state cards setup
             let stateLi = document.createElement('li')
@@ -181,7 +181,7 @@ $(document).ready(function(){
             let stateDeathCount = document.createElement('h1')
 
             // append cards to the document
-            stateLi.appendChild(stateName)
+            stateLi.appendChild(stateName) 
 
             stateConfirmedCard.appendChild(stateConfirmedTitle)
             stateConfirmedCard.appendChild(stateConfirmedCount)
@@ -250,6 +250,20 @@ $(document).ready(function(){
             })
         };
 
+        // State search
+        const searchState = document.forms['searchState'].querySelector('input');
+        searchState.addEventListener('keyup', function(e){
+            const term = e.target.value.toLowerCase();
+            const states = stateList.getElementsByTagName('li');
+            Array.from(states).forEach(function(state){
+                const title = state.firstElementChild.textContent;
+                if (title.toLowerCase().indexOf(term) == -1){
+                    state.classList.add("hidden")
+                } else {
+                    state.classList.remove("hidden")
+                }
+            })          
+        })
     });
 });
 
