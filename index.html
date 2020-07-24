@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Covid-19-India Live</title>
     <link rel="stylesheet" href="public/styles.css">
-    <link rel="stylesheet" href="special.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css">
 </head>
 <body class="bg-gray-200">
 
@@ -40,7 +40,7 @@
             </nav>
 
             <main>
-                <div class="relative sticky top-0 py-2">
+                <div class="relative sticky top-0 py-2 md:mx-4">
                     <div class="buttons flex items-center justify-around text-3xl text-white tracking-wide shadow-xl">
                         <button data-target="#indiaPage" class="flex-1 text-center font-semibold py-2 hover:bg-indigo-700 bg-indigo-900 text-xl sm:text-2xl md:text-3xl rounded-l-lg">India</button>
                         <button data-target="#statesPage" class="flex-1 text-center font-semibold py-2 hover:bg-indigo-700 bg-indigo-900 text-xl sm:text-2xl md:text-3xl">States</button>
@@ -114,7 +114,7 @@
                     </ul>
                 </div>
 
-                <div id="protectPage" class="page hidden bg-white mx-5 shadow-xl rounded-lg py-6 sm:px-12 md:px-16 lg:px-24">
+                <div id="protectPage" class="page hidden py-6 sm:px-12 md:px-16 lg:px-24">
                     <h1 class="text-5xl font-semibold text-gray-900 tracking-tight leading-tight underline">
                         Protect yourself and others from <span class="text-red-900"><a href="#covidPage">COVID-19</a></span>.</h1>
                     <!-- <hr class="border-2 border-gray-700 rounded-r w-full"> -->
@@ -170,10 +170,20 @@
 
             </main>
 
-            <footer>
-                <div class="">
+            <footer class="md:px-4 ">
+                <div class="bg-white rounded-t-lg shadow-outline">
+                    <!-- [ 💻 🌐 🖱️ ⌨️ ] -->
                     <h1 class="text-black text-center py-3 px-auto mt-5 text-lg">
-                    [ 💻 🌐 🖱️ ⌨️ ] + <a class="font-semibold hover:font-bold text-lg" href="https://hanoonih.github.io/" target="_blank">HIH</a>.</h1>
+                    Developed by <a class="font-semibold hover:font-bold text-lg hover:underline" href="https://hanoonih.github.io/" target="_blank">HIH</a>.
+                    <br>
+                    <a href="https://github.com/HanoonIH" target="_blank"><i class="fab fa-github  text-lg px-1 text-gray-700 hover:text-gray-900"></i></a>
+                    <a href="https://www.instagram.com/hanoonih/" target="_blank"><i class="fab fa-instagram text-lg px-1 text-pink-700 hover:text-pink-900"></i></a>
+                    <a href="https://www.facebook.com/HanoonHih" target="_blank"><i class="fab fa-facebook-f text-lg px-1 text-blue-700 hover:text-blue-900"></i></a>
+                    <a href="https://twitter.com/hanoon_ih" target="_blank"><i class="fab fa-twitter text-lg px-1 text-blue-500 hover:text-blue-700"></i></a>
+                    <br>
+                    <a class="italic font-semibold text-indigo-700 hover:text-indigo-900 hover:underline" href="https://api.covid19india.org/" target="_blank">Data source</a>
+                    
+                    </h1>
                 </div>
             </footer>
         </div>
