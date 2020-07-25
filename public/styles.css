@@ -690,6 +690,16 @@ video {
   color: rgba(0, 0, 0, var(--text-opacity))
 }
 
+.today-count {
+  font-weight: 700;
+  font-size: 1.25rem
+}
+
+.percentage {
+  font-size: 1.25rem;
+  font-weight: 600
+}
+
 .info-text {
   font-size: 1.875rem;
   font-weight: 600;

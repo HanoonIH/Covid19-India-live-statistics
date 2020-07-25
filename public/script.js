@@ -23,18 +23,32 @@ $(document).ready(function(){
 
         // Live status
         var lastUpdated, totalConfirmed, totalRecovered, totalActive, totalDeath;
+        var totalConfirmedToday, totalRecoveredToday, totalDeathToday, totalActivePer;
 
         lastUpdated = data.statewise[0].lastupdatedtime;
         totalConfirmed = data.statewise[0].confirmed;
         totalRecovered = data.statewise[0].recovered;
         totalActive = data.statewise[0].active;
         totalDeath = data.statewise[0].deaths;
+        totalConfirmedToday = data.statewise[0].deltaconfirmed;
+        totalRecoveredToday = data.statewise[0].deltarecovered;
+        totalDeathToday = data.statewise[0].deltadeaths;
+
+        totalActivePer = `${((totalActive / totalConfirmed) * 100).toFixed(1)} %`
+        totalRecoveredPer = `${((totalRecovered / totalConfirmed) * 100).toFixed(1)} %`
+        totalDeathPer = `${((totalDeath / totalConfirmed) * 100).toFixed(1)} %`
 
         $('#lastUpdated').append(lastUpdated);
         $('#confirmed').append(totalConfirmed);
         $('#recovered').append(totalRecovered);
         $('#active').append(totalActive);
         $('#death').append(totalDeath);
+        $('#totalConfirmedToday').append(totalConfirmedToday);
+        $('#totalRecoveredToday').append(totalRecoveredToday);
+        $('#totalDeathToday').append(totalDeathToday);
+        $('#totalActivePer').append(totalActivePer);
+        $('#totalRecoveredPer').append(totalRecoveredPer);
+        $('#totalDeathPer').append(totalDeathPer);
 
         // Variables for charts
         var state = [];
@@ -44,6 +58,10 @@ $(document).ready(function(){
         var active = [];
         var deaths = [];
 
+        var confirmedToday = [];
+        var recoveredToday = [];
+        var deathToday = [];
+
         $.each(data.statewise, function(id, obj){
             state.push(obj.state);
             statecode.push(obj.statecode);
@@ -51,6 +69,9 @@ $(document).ready(function(){
             recovered.push(obj.recovered);
             active.push(obj.active);
             deaths.push(obj.deaths);
+            confirmedToday.push(obj.deltaconfirmed);
+            recoveredToday.push(obj.deltarecovered);
+            deathToday.push(obj.deltadeaths)
         })
 
         state.shift()
@@ -59,6 +80,9 @@ $(document).ready(function(){
         recovered.shift()
         active.shift()
         deaths.shift()
+        confirmedToday.shift()
+        recoveredToday.shift()
+        deathToday.shift()
 
         // Chart 1 - All States
         var myChart = document.getElementById('myChart').getContext('2d');
@@ -167,10 +191,12 @@ $(document).ready(function(){
             let stateConfirmedCard = document.createElement('div')
             let stateConfirmedTitle = document.createElement('h1')
             let stateConfirmedCount = document.createElement('h1')
+            let stateConfirmedToday = document.createElement('h1')
 
             let stateRecoveredCard = document.createElement('div')
             let stateRecoveredTitle = document.createElement('h1')
             let stateRecoveredCount = document.createElement('h1')
+            let stateRecoveredToday = document.createElement('h1')
 
             let stateActiveCard = document.createElement('div')
             let stateActiveTitle = document.createElement('h1')
@@ -179,12 +205,14 @@ $(document).ready(function(){
             let stateDeathCard = document.createElement('div')
             let stateDeathTitle = document.createElement('h1')
             let stateDeathCount = document.createElement('h1')
+            let stateDeathToday = document.createElement('h1')
 
             // append cards to the document
             stateLi.appendChild(stateName) 
 
             stateConfirmedCard.appendChild(stateConfirmedTitle)
             stateConfirmedCard.appendChild(stateConfirmedCount)
+            stateConfirmedCard.appendChild(stateConfirmedToday)
             cardsContainer.appendChild(stateConfirmedCard)
             
             stateActiveCard.appendChild(stateActiveTitle)
@@ -193,10 +221,12 @@ $(document).ready(function(){
 
             stateRecoveredCard.appendChild(stateRecoveredTitle)
             stateRecoveredCard.appendChild(stateRecoveredCount)
+            stateRecoveredCard.appendChild(stateRecoveredToday)
             cardsContainer.appendChild(stateRecoveredCard)
 
             stateDeathCard.appendChild(stateDeathTitle)
             stateDeathCard.appendChild(stateDeathCount)
+            stateDeathCard.appendChild(stateDeathToday)
             cardsContainer.appendChild(stateDeathCard)
 
             stateLi.appendChild(cardsContainer)
@@ -234,6 +264,10 @@ $(document).ready(function(){
             stateRecoveredCount.textContent = recovered[i]
             stateActiveCount.textContent = active[i]
             stateDeathCount.textContent = deaths[i]
+           
+            stateConfirmedToday.textContent = confirmedToday[i]
+            stateRecoveredToday.textContent = recoveredToday[i]
+            stateDeathToday.textContent = deathToday[i]
         }
 
         // State collapse button
